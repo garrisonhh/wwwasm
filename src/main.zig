@@ -60,33 +60,37 @@ export fn draw(buf: [*]u32, width: usize, height: usize) void {
     }
 }
 
-export fn on_mouse_event(
-    ev: c.MouseEvent,
-    button: c_int,
-    x: usize,
-    y: usize,
-) void {
-    const ev_name = switch (ev) {
-        c.MOUSE_DOWN => "mouse down",
-        c.MOUSE_UP => "mouse up",
-        else => unreachable,
-    };
+// export fn on_mouse_event(
+//     ev: c.MouseEvent,
+//     button: c_int,
+//     x: usize,
+//     y: usize,
+// ) void {
+//     const ev_name = switch (ev) {
+//         c.MOUSE_DOWN => "mouse down",
+//         c.MOUSE_UP => "mouse up",
+//         else => unreachable,
+//     };
+//
+//     debug("{s}: {} ({}, {})\n", .{ ev_name, button, x, y });
+// }
 
-    debug("{s}: {} ({}, {})\n", .{ ev_name, button, x, y });
+export fn on_mouse_scroll_event(delta_y: f64) void {
+    debug("scroll: {d}", .{delta_y});
 }
 
-export fn on_key_event(
-    ev: c.KeyEvent,
-    keyname: [*]const u8,
-    keyname_len: usize,
-) void {
-    const key = keyname[0..keyname_len];
-
-    const ev_name = switch (ev) {
-        c.KEY_DOWN => "key down",
-        c.KEY_UP => "key up",
-        else => unreachable,
-    };
-
-    debug("{s}: {s}\n", .{ ev_name, key });
-}
+// export fn on_key_event(
+//     ev: c.KeyEvent,
+//     keyname: [*]const u8,
+//     keyname_len: usize,
+// ) void {
+//     const key = keyname[0..keyname_len];
+//
+//     const ev_name = switch (ev) {
+//         c.KEY_DOWN => "key down",
+//         c.KEY_UP => "key up",
+//         else => unreachable,
+//     };
+//
+//     debug("{s}: {s}\n", .{ ev_name, key });
+// }

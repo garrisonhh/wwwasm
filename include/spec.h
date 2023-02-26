@@ -26,6 +26,7 @@
  * --- events ---
  *
  * `void on_mouse_event(MouseEvent, int button, size_t x, size_t y)`
+ * `void on_mouse_scroll_event(double delta_y)`
  * `void on_key_event(KeyEvent, const char *keyname, size_t keyname_len)`
  */
 

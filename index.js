@@ -166,6 +166,10 @@ function onMouseEvent(kind, e) {
   instance.exports.on_mouse_event(kind, e.button, e.clientX, e.clientY);
 }
 
+function onMouseScrollEvent(e) {
+  instance.exports.on_mouse_scroll_event(e.deltaY);
+}
+
 function onKeyEvent(kind, e) {
   const code = dupeString(e.code);
   const code_len = e.code.length;
@@ -191,6 +195,10 @@ function initInputListeners() {
 
     addEventListener('keydown', (e) => onKeyEvent(KEY_DOWN, e));
     addEventListener('keyup', (e) => onKeyEvent(KEY_UP, e));
+  }
+
+  if ('on_mouse_scroll_event' in ex) {
+    addEventListener('wheel', onMouseScrollEvent);
   }
 }
 
