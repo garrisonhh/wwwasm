@@ -1,6 +1,19 @@
 const std = @import("std");
+const builtin = @import("builtin");
 
 pub fn build(b: *std.build.Builder) void {
+    comptime {
+        const desired = try std.SemanticVersion.parse("0.10.1");
+        const version = builtin.zig_version;
+        if (version.order(desired).compare(.neq)) {
+            const msg = std.fmt.comptimePrint(
+                "expected zig version {}, found {}",
+                .{ desired, version },
+            );
+            @compileError(msg);
+        }
+    }
+
     const mode = b.standardReleaseOptions();
 
     // wasm target

@@ -30,7 +30,9 @@
  * `void on_key_event(KeyEvent, const char *keyname, size_t keyname_len)`
  */
 
+// I'm not going to force consumers to link libc just to get 'usize' lmao
 typedef long long unsigned int size_t;
+_Static_assert(sizeof(size_t) == 8);
 
 // debug logging function
 void debug(const char *msg, size_t len);
@@ -48,4 +50,4 @@ typedef enum KeyEvent {
     KEY_UP,
 } KeyEvent;
 
-#endif /* WASM_SPEC_H */
+#endif /* WWWASM_SPEC_H */
